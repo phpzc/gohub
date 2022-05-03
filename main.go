@@ -26,6 +26,9 @@ func main() {
 
 	config.InitConfig(env)
 
+	//初始化logger
+	bootstrap.SetupLogger()
+
 	//new gin
 	router := gin.New()
 
