@@ -4,7 +4,9 @@ import (
 	"flag"
 	"fmt"
 	"gohub/bootstrap"
+	"gohub/pkg/captcha"
 	"gohub/pkg/config"
+	"gohub/pkg/logger"
 
 	btsConfig "gohub/config"
 
@@ -44,6 +46,9 @@ func main() {
 	bootstrap.SetupRedis()
 	//初始化路由绑定
 	bootstrap.SetRoute(router)
+
+	logger.Dump(captcha.NewCaptcha().VerifyCaptcha("UFuTESFSUKFhGtdmR8vs", "083804"), "正确的答案")
+	logger.Dump(captcha.NewCaptcha().VerifyCaptcha("UFuTESFSUKFhGtdmR8vs", "000000"), "错误的答案")
 
 	err := router.Run(":" + config.Get("app.port"))
 
