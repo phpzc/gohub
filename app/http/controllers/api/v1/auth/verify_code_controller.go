@@ -2,9 +2,11 @@ package auth
 
 import (
 	v1 "gohub/app/http/controllers/api/v1"
+	"gohub/app/requests"
 	"gohub/pkg/captcha"
 	"gohub/pkg/logger"
 	"gohub/pkg/response"
+	"gohub/pkg/verifycode"
 
 	"github.com/gin-gonic/gin"
 )
@@ -24,6 +26,26 @@ func (vc *VerifyCodeController) ShowCaptcha(c *gin.Context) {
 	//返回给用户
 	response.JSON(c, gin.H{
 		"captch_id":    id,
-		"cpatch_image": b64s,
+		"captch_image": b64s,
 	})
+}
+
+// 发送Email验证码
+func (vc *VerifyCodeController) SendUsingEmail(c *gin.Context) {
+
+	//验证表单
+	request := requests.VerifyCodeEmailRequest{}
+
+	if ok := requests.Validate(c, &request, requests.VerifyCodeEmail); !ok {
+		return
+	}
+
+	//发送
+	err := verifycode.NewVerifyCode().SendEmail(request.Email)
+
+	if err != nil {
+		response.Abort500(c, "发送 Email 验证码失败")
+	} else {
+		response.Success(c)
+	}
 }

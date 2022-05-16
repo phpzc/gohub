@@ -20,7 +20,7 @@ func Validate(c *gin.Context, obj interface{}, handler ValidatorFunc) bool {
 		return false
 	}
 
-	//表单亚洲
+	//表单验证
 	errs := handler(obj, c)
 
 	if len(errs) > 0 {
