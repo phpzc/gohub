@@ -10,7 +10,7 @@ import (
 )
 
 //SetupRoute 路由初始化
-func SetRoute(router *gin.Engine) {
+func SetupRoute(router *gin.Engine) {
 
 	//注册全局中间件
 	registerGlobalMiddlWare(router)
