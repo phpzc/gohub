@@ -36,6 +36,7 @@ func init() {
 	//注册make 的子命令
 	CmdMake.AddCommand(
 		CmdMakeCMD,
+		CmdMakeModel,
 	)
 }
 
@@ -48,6 +49,7 @@ func makeModelFromString(name string) Model {
 	model.TableName = str.Snake(model.StructNamePlural)
 	model.VariableName = str.LowerCamel(model.StructName)
 	model.PackageName = str.Snake(model.StructName)
+	model.VariableNamePlural = str.LowerCamel(model.StructNamePlural)
 
 	return model
 }
