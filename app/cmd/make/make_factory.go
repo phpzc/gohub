@@ -8,7 +8,7 @@ import (
 
 var CmdMakeFactory = &cobra.Command{
 	Use:   "factory",
-	Short: "",
+	Short: "Create model's factory file, exmaple: make factory user",
 	Run:   runMakeFactory,
 	Args:  cobra.ExactArgs(1),
 }
