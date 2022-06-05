@@ -15,7 +15,7 @@ type User struct {
 	Phone    string `json:"-"`
 	Password string `json:"-"`
 
-	models.CommonTimeStampsField
+	models.CommonTimestampsField
 }
 
 func (userModel *User) Create() {

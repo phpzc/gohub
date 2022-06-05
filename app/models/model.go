@@ -11,7 +11,7 @@ type BaseModel struct {
 }
 
 //Common TimestampsField 时间戳
-type CommonTimeStampsField struct {
+type CommonTimestampsField struct {
 	CreatedAt time.Time `gorm:"column:created_at;index;" json:"created_at,omitempty"`
 	UpdatedAt time.Time `gorm:"column:updated_at;index;" json:"updated,omitempty"`
 }

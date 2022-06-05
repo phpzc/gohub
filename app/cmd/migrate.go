@@ -13,6 +13,7 @@ var CmdMigrate = &cobra.Command{
 	//所有 migrate 下的子命令都会执行 以下代码
 }
 
+//执行迁移文件的命令
 var CmdMigrateUp = &cobra.Command{
 	Use:   "up",
 	Short: "Run unmigrated migrations",
