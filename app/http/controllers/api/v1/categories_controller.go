@@ -59,3 +59,18 @@ func (ctrl *CategoriesController) Update(c *gin.Context) {
 
 	}
 }
+
+func (ctrl *CategoriesController) Index(c *gin.Context) {
+
+	request := requests.PaginationRequest{}
+	if ok := requests.Validate(c, &request, requests.Pagination); !ok {
+		return
+	}
+
+	data, pager := category.Paginate(c, 10)
+	response.JSON(c, gin.H{
+		"data":  data,
+		"pager": pager,
+	})
+
+}
