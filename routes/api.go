@@ -87,6 +87,8 @@ func RegisterAPIRoutes(r *gin.Engine) {
 		{
 			//创建话题
 			tpcGroup.POST("", middlewares.AuthJWT(), tpc.Store)
+			//更新话题
+			tpcGroup.PUT("/:id", middlewares.AuthJWT(), tpc.Update)
 		}
 	}
 }
